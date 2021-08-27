@@ -1,5 +1,5 @@
 <template>
-    <div @click="redirect" class="box-content border rounded m-2 h-80 w-64 shadow-2xl justify-center grid hover:shadow-none hover:bg-gray-900 hover:text-white hover:border-gray-900 cursor-pointer bg-white">
+    <div @click="redirect" :currentUrl="pastUrl" class="box-content border rounded m-2 h-80 w-64 shadow-2xl justify-center grid hover:shadow-none hover:bg-gray-900 hover:text-white hover:border-gray-900 cursor-pointer bg-white">
         <img class="w-64 justify-self-center" :src="pokemon.img">
         <div class="-mt-8">  
             <h1 class="font-bold text-center text-xl">{{ toUppercase(pokemon.name) }}</h1>
@@ -18,7 +18,7 @@
 export default {
     props:{
         pokemon: {},
-        currentUrl: ''
+        pastUrl: ''
     },
     data(){
         return{
@@ -28,7 +28,7 @@ export default {
     },
     methods:{
         redirect(){
-            this.$router.push({ path: `/details/${this.pokemon.id}` })
+            this.$router.push({ name: 'Details', params: { id: this.pokemon.id } })
         },
         toUppercase(word){
             return word.charAt(0).toUpperCase() + word.slice(1);
@@ -36,7 +36,7 @@ export default {
     },
     computed: {
         
-    }
+    },
     
 }
 </script>

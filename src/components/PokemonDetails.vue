@@ -66,7 +66,7 @@ export default({
     },
     methods:{
         goBack() {
-            this.$router.push({ path: `/` })
+            this.$router.push({ path: `/`, props: 'https://pokeapi.co/api/v2/pokemon/?limit=10&offset=60' })
         },
         fetchData(){
             let pokemonUrl = this.url + this.id
@@ -120,9 +120,8 @@ export default({
     created(){
         this.fetchData()
         this.getOfficialImg()
+        
     },
-    mounted(){
-    }
 })
 </script>
 
