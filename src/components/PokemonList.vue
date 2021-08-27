@@ -1,8 +1,9 @@
 <template>
         <div class="flex flex-row flex-wrap justify-center h-screen bg-gray-600">
+            <pokemon-search class=""/>
             <i @click="previous" class="fas fa-chevron-circle-left text-3xl mr-16 self-center hover:text-gray-300 cursor-pointer text-white" ></i>
-            <div class="grid grid-flow-row grid-cols-5 grid-rows-2 justify-evenly self-center">
-                <pokemon-card v-for="pokemon in pokemonArray" :key="pokemon" :pokemon="pokemon"/>
+            <div class="grid grid-flow-row grid-cols-5 grid-rows-2  justify-evenly self-center">
+                <pokemon-card v-for="pokemon in pokemonArray" :key="pokemon" :pokemon="pokemon" :currentUrl="currentUrl"/>
             </div>
             <i @click="next" class="fas fa-chevron-circle-right text-3xl ml-16 self-center cursor-pointer text-white hover:text-gray-300"></i>
         </div>
@@ -10,10 +11,12 @@
 
 <script>
 import PokemonCard from "./PokemonCard.vue";
+import PokemonSearch from './PokemonSearch.vue'
 import axios from "axios";
 export default {
     components: {
         PokemonCard,
+        PokemonSearch
     },
     data() {
         return {
@@ -43,10 +46,8 @@ export default {
                     img: res.data.sprites.front_default,
                     id: res.data.id,
                     name: res.data.name,
-                    
+                    types: res.data.types
                 };
-
-                console.log(pokemon);
                 this.pokemonArray.push(pokemon);
                 this.pokemonArray.sort(function(a, b) {
                     return a.id - b.id;
