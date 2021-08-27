@@ -1,12 +1,14 @@
 <template>
-        <div class="flex flex-row flex-wrap justify-center h-screen bg-gray-600">
-            <pokemon-search class=""/>
-            <i @click="previous" class="fas fa-chevron-circle-left text-3xl mr-16 self-center hover:text-gray-300 cursor-pointer text-white" ></i>
-            <div class="grid grid-flow-row grid-cols-5 grid-rows-2  justify-evenly self-center">
-                <pokemon-card v-for="pokemon in pokemonArray" :key="pokemon" :pokemon="pokemon" :pastUrl="currentUrl"/>
+        <article class="min-h-screen flex flex-col items-center justify-center">
+            <pokemon-search/>
+            <article class="grid xl:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-10">
+                <pokemon-card v-for="pokemon in pokemonArray" :key="pokemon" :pokemon="pokemon"/>
+            </article>
+            <div class="flex justify-center my-4">
+                <i @click="previous" class="fas fa-chevron-circle-left mx-8 text-3xl self-center hover:text-gray-300 cursor-pointer text-white" ></i>
+            <i @click="next" class="fas fa-chevron-circle-right text-3xl mx-8 self-center cursor-pointer text-white hover:text-gray-300"></i>
             </div>
-            <i @click="next" class="fas fa-chevron-circle-right text-3xl ml-16 self-center cursor-pointer text-white hover:text-gray-300"></i>
-        </div>
+        </article>
 </template>
 
 <script>

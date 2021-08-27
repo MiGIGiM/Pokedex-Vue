@@ -1,15 +1,15 @@
 <template>
-    <div @click="redirect" :currentUrl="pastUrl" class="box-content border rounded m-2 h-80 w-64 shadow-2xl justify-center grid hover:shadow-none hover:bg-gray-900 hover:text-white hover:border-gray-900 cursor-pointer bg-white">
-        <img class="w-64 justify-self-center" :src="pokemon.img">
+    <article @click="redirect" :currentUrl="pastUrl" class="flex flex-col justify-evenly border rounded m-2 shadow-2xl hover:shadow-none hover:bg-gray-900 hover:text-white hover:border-gray-900 cursor-pointer bg-white">
+        <img class="w-64 self-center -mt-2" :src="pokemon.img">
         <div class="-mt-8">  
             <h1 class="font-bold text-center text-xl">{{ toUppercase(pokemon.name) }}</h1>
-            <div class="grid grid-col-2 grid-flow-col justify-around pt-2">
+            <div class="pt-2 flex-row flex justify-center mb-2">
                 <h3 :class="a.type.name" class="font-bold  text-xl rounded-full py-1 px-4 text-white" v-for="a in pokemon.types" :key="a">
                     {{ toUppercase(a.type.name) }}
                 </h3>
             </div>
         </div>
-    </div>
+    </article>
     
 </template>
 

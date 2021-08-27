@@ -1,9 +1,9 @@
 <template>
-    <div class="min-h-screen bg-gray-600 flex justify-center items-center">
-        <div class="py-12 px-1 bg-white rounded-2xl shadow-xl z-20 grid grid-flow-col grid-cols-2">
-            <i class="fas fa-arrow-circle-left absolute z-10 pl-10 text-3xl cursor-pointer" @click="goBack"></i>
+    <div class="min-h-screen bg-gray-600 flex  justify-center items-center p-10">
+        <div class="py-12 px-1 bg-white rounded-2xl shadow-xl -mt-2 grid xl:grid-cols-2 md:grid-cols-1">
             <article>
-                <div class="flex justify-center rounded-full m-8 bg-green-100">
+                <i class="fas fa-arrow-circle-left absolute z-10 pl-4 text-4xl cursor-pointer" @click="goBack"></i>
+                <div class="rounded-full m-8 bg-green-100">
                     <img class="h-96" :src="imgUrl" alt="">
                 </div>
                 <h1 class="text-5xl px-20 font-bold text-center mb-4">{{ pokemon.id + '. ' + capitalizeFirst(pokemon.name) }}</h1>
@@ -27,7 +27,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="bg-gray-100 rounded-lg mb-4">
+                    <div class="bg-gray-100 rounded-lg -mb-16">
                         <h2 class="text-2xl ml-5 pt-2 font-semibold">Abilities</h2>
                         <ol class="list-decimal list-inside">
                             <li class="text-xl py-1 px-4" v-for="a in pokemon.abilities" :key="a">
@@ -66,7 +66,7 @@ export default({
     },
     methods:{
         goBack() {
-            this.$router.push({ path: `/`, props: 'https://pokeapi.co/api/v2/pokemon/?limit=10&offset=60' })
+            this.$router.push({ path: `/` })
         },
         fetchData(){
             let pokemonUrl = this.url + this.id
